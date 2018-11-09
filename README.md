@@ -1,0 +1,2 @@
+# koodiesimerkit
+Harjoitustyöhön liittyvät koodiesimerkit
