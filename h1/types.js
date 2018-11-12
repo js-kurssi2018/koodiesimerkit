@@ -1,7 +1,7 @@
 /**
  * Converts the specified numeric string to a number.
  * If the string cannot be converted to a number, returns undefined.
- * 
+ *
  * @param {string} string string to be converted to a number
  */
 function parseNumber(string) {
@@ -19,7 +19,7 @@ function parseNumber(string) {
 /**
  * Converts the specified numberic string to an integer.
  * If the specified string cannot be converted to an integer, returns undefined.
- * 
+ *
  * @param {string} string string to be converted to an integer
  */
 function parseInt(string) {
@@ -38,20 +38,44 @@ function parseInt(string) {
 }
 
 /**
- * Returns true if obj is of the specified type
+ * Returns as a string the type of the first argument
  * 
- * Reference: http://bonsaiden.github.io/JavaScript-Garden/#types
- * 
- * @param {*} type 
- * @param {*} obj 
+ * @param {*} obj object whose type is to be returned
  */
-function is(type, obj) {
-  var clas = Object.prototype.toString.call(obj).slice(8, -1);
-  return obj !== undefined && obj !== null && clas === type;
+function getType(obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1)
+}
+
+function isNumber(x) {
+  return getType(x) === 'Number'
+}
+
+function isInteger(x) {
+  return isNumber(x) && x % 1 === 0
+}
+
+function isBoolean(x) {
+  return getType(x) === 'Boolean'
+}
+
+function isString(x) {
+  return getType(x) === 'String'
+}
+
+function isObject(x) {
+  return getType(x) === 'Object'
+}
+
+function isFunction(x) {
+  return getType(x) === 'Function'
+}
+
+function isArray(x) {
+  return getType(x) === 'Array'
 }
 
 function isArrayOf(array, fun) {
-  if (!is('Array', array)) {
+  if (!isArray(array)) {
     return false
   }
 
@@ -63,25 +87,24 @@ function isArrayOf(array, fun) {
 }
 
 function isNumberArray(array) {
-  function isNumeric(x) {
-    return is('Number', x)
-  }
-
-  return isArrayOf(array, isNumeric)
+  return isArrayOf(array, isNumber)
 }
 
 function isIntegerArray(array) {
-  function isInteger(x) {
-    return is('Number', x) && x % 1 === 0
-  }
-
   return isArrayOf(array, isInteger)
 }
 
 module.exports = {
   parseNumber,
   parseInt,
-  is,
+  getType,
+  isNumber,
+  isInteger,
+  isBoolean,
+  isString,
+  isObject,
+  isFunction,
+  isArray,
   isArrayOf,
   isNumberArray,
   isIntegerArray
