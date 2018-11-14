@@ -1,6 +1,6 @@
 /**
  * Converts the specified numeric string to a number.
- * If the string cannot be converted to a number, returns undefined.
+ * If the string cannot be converted to a number, returns NaN.
  *
  * @param {string} string string to be converted to a number
  */
@@ -8,30 +8,29 @@ function parseNumber(string) {
   // Exclude special cases
   // Number converts both '' and null to 0
   if (string === '' || string === null) {
-    return undefined
+    return NaN
   }
 
   // Convert to a number
-  let x = Number(string)
-  return isNaN(x) ? undefined : x
+  return Number(string)
 }
 
 /**
  * Converts the specified numberic string to an integer.
- * If the specified string cannot be converted to an integer, returns undefined.
+ * If the specified string cannot be converted to an integer, returns NaN.
  *
  * @param {string} string string to be converted to an integer
  */
 function parseInt(string) {
   // Convert to a number
   let x = parseNumber(string)
-  if (x === undefined) {
-    return undefined
+  if (x === NaN) {
+    return NaN
   }
 
   // Test whether the number is an integer
   if (x % 1 !== 0) {
-    return undefined
+    return NaN
   }
 
   return x
@@ -75,7 +74,7 @@ function isArray(x) {
 }
 
 function isArrayOf(array, fun) {
-  if (!isArray(array)) {
+  if (!isArray(array) || !isFunction(fun)) {
     return false
   }
 

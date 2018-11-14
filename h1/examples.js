@@ -11,25 +11,25 @@ console.log('--- parseNumber ---')
 console.log(t.parseNumber('123'))     // 123
 console.log(t.parseNumber('12.3'))    // 12.3
 console.log(t.parseNumber('123e-1'))  // 12.3
-console.log(t.parseNumber(''))        // undefined
-console.log(t.parseNumber(null))      // undefined 
+console.log(t.parseNumber(''))        // NaN
+console.log(t.parseNumber(null))      // NaN 
 console.log(t.parseNumber('0x11'))    // 17
 console.log(t.parseNumber('0b11'))    // 3
 console.log(t.parseNumber('0o11'))    // 9
-console.log(t.parseNumber('foo'))     // undefined
-console.log(t.parseNumber('100a'))    // undefined
+console.log(t.parseNumber('foo'))     // NaN
+console.log(t.parseNumber('100a'))    // NaN
 console.log()
 console.log('--- parseInt ---')
 console.log(t.parseInt('123'))     // 123
-console.log(t.parseInt('12.3'))    // undefined
-console.log(t.parseInt('123e-1'))  // undefined
-console.log(t.parseInt(''))        // undefined
-console.log(t.parseInt(null))      // undefined 
+console.log(t.parseInt('12.3'))    // NaN
+console.log(t.parseInt('123e-1'))  // NaN
+console.log(t.parseInt(''))        // NaN
+console.log(t.parseInt(null))      // NaN 
 console.log(t.parseInt('0x11'))    // 17
 console.log(t.parseInt('0b11'))    // 3
 console.log(t.parseInt('0o11'))    // 9
-console.log(t.parseInt('foo'))     // undefined
-console.log(t.parseInt('100a'))    // undefined
+console.log(t.parseInt('foo'))     // NaN
+console.log(t.parseInt('100a'))    // NaN
 
 // All the following examples evaluate to true
 console.log()
